@@ -21,11 +21,11 @@ namespace Collections
 
         static void Main(string[] args)
         {
-            EnumerableExample();
+            //EnumerableExample();
             //YieldExample();
             //CollectionExample();
             //ListExample();
-            //DictionaryExample();
+            DictionaryExample();
         }
 
         private static void EnumerableExample()
@@ -101,6 +101,7 @@ namespace Collections
             }
 
             //TODO 3: Update bandsCollection.Clear() so it prints the removed items.
+            bandsCollection.Clear();
         }
 
         private static void ListExample()
@@ -111,10 +112,11 @@ namespace Collections
             var bandsList = new List<Band>(BandsArray);
 
             //Custom comparer example
-            bandsList.Sort(new BasicBandsComparer());
+            //bandsList.Sort(new BasicBandsComparer());
             //bandsList.Sort(new CustomBandsComparer(BandsCompareBy.Country));
             //bandsList.Sort(new CustomBandsComparer(BandsCompareBy.Name));
             //bandsList.Sort(new CustomBandsComparer(BandsCompareBy.AlbumCount));
+            bandsList.Sort(new CustomBandsComparer(BandsCompareBy.NameLength));
 
             var index = 0;
             foreach (var band in bandsList)
@@ -169,7 +171,7 @@ namespace Collections
             foreach (var keyValuePair in bandsDictionary)
             {
                 //TODO 5: Change to display key and albums count
-                Console.WriteLine($"Key: {keyValuePair.Key}, Value: {keyValuePair.Value}");
+                Console.WriteLine($"Key: {keyValuePair.Key}, Value: {keyValuePair.Value.StudioAlbums}");
             }
 
             Console.WriteLine();
@@ -181,8 +183,16 @@ namespace Collections
             Console.WriteLine();
 
             //TODO 7: Check if key is present before adding/retrieving a new entry.
-            //bandsDictionary.Add("Muse", new Band("Muse", 6, "Alternative Rock", "England"));
-            //Console.WriteLine(bandsDictionary["Band X"].Name);
+            if (!bandsDictionary.ContainsKey("Muse"))
+            {
+                bandsDictionary.Add("Muse", new Band("Muse", 6, "Alternative Rock", "England"));
+            }
+            if (bandsDictionary.ContainsKey("Band X"))
+            {
+                Console.WriteLine(bandsDictionary["Band X"].Name);
+            }   
+            
+
         }
 
         private static IEnumerable<string> FrontmenList

@@ -42,7 +42,11 @@ namespace Collections.Collection
 
         protected override void ClearItems()
         {
-            base.ClearItems();         
+            foreach (Band band in Items)
+            {
+                Console.WriteLine($"{band.Name} was removed!");
+            }
+            base.ClearItems();
         }
     }
 }

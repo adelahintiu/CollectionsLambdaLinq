@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Collections.Enumerable
 {
@@ -26,9 +27,9 @@ namespace Collections.Enumerable
 
         public bool MoveNext()
         {
-            currentIndex++;
+            currentIndex--;
 
-            if (currentIndex >= collection.Length)
+            if (currentIndex < 0)
             {
                 return false;
             }
@@ -37,9 +38,10 @@ namespace Collections.Enumerable
             return true;
         }
 
+       
         public void Reset()
         {
-            currentIndex = -1;
+            currentIndex = collection.Length;
             currentBand = null;
         }
     }
