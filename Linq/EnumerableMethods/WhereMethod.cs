@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Linq.EnumerableMethods
@@ -31,7 +32,7 @@ namespace Linq.EnumerableMethods
         //Hint: For string comparison, use string.StartsWith with StringComparison.InvariantCultureIgnoreCase
         public static IEnumerable<Band> GetBandsThatStartWithBlack(IEnumerable<Band> bandsList)
         {
-            return new List<Band>();
+           return bandsList.Where(band => band.Name.StartsWith("black", StringComparison.CurrentCultureIgnoreCase));
         }
     }
 }

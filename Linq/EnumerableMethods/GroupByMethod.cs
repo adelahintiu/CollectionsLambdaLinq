@@ -38,7 +38,7 @@ namespace Linq.EnumerableMethods
         // Group the bands by the number of albums.
         public static IEnumerable<IGrouping<int, Band>>  GetBandsGroupedByNumberOfAlbums(IEnumerable<Band> bands)
         {
-            return null;
+            return bands.GroupBy(band => band.Albums.Count());
         }
     }
 }

@@ -25,7 +25,7 @@ namespace Linq.EnumerableMethods
         //Implement the method, so it returns the sum of even numbers in the list.
         public static int GetSumOfEvenNumbers(IEnumerable<int> numbersList)
         {
-            return default(int);
+            return numbersList.Aggregate(0, (sum, elem) => elem % 2 == 0 ? sum = sum + elem : sum);
         }
     }
 }

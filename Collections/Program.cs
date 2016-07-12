@@ -24,8 +24,8 @@ namespace Collections
             //EnumerableExample();
             //YieldExample();
             //CollectionExample();
-            //ListExample();
-            DictionaryExample();
+            ListExample();
+            //DictionaryExample();
         }
 
         private static void EnumerableExample()
@@ -36,12 +36,18 @@ namespace Collections
             //Enumerating example
             var bands = new BandsEnumerable(BandsArray);
             var enumerator = bands.GetEnumerator();
+            var nr = 0;
             while (enumerator.MoveNext())
             {
                 var band = enumerator.Current;
                 Console.WriteLine($"{band.Name} ({band.Genre}, {band.Country}): {band.StudioAlbums} albums.");
+                nr++;
             }
 
+            for(var i = 0; i < nr; i++){
+                Console.WriteLine($"{i} : {bands[i].Name} ({bands[i].Genre}, {bands[i].Country}): {bands[i].StudioAlbums} albums.");
+            }
+            
             //TODO 1: Change "BandsEnumerator" to enumerate from last element to first.
         }
 
@@ -116,15 +122,21 @@ namespace Collections
             //bandsList.Sort(new CustomBandsComparer(BandsCompareBy.Country));
             //bandsList.Sort(new CustomBandsComparer(BandsCompareBy.Name));
             //bandsList.Sort(new CustomBandsComparer(BandsCompareBy.AlbumCount));
-            bandsList.Sort(new CustomBandsComparer(BandsCompareBy.NameLength));
+            //bandsList.Sort(new CustomBandsComparer(BandsCompareBy.NameLength));
 
             var index = 0;
             foreach (var band in bandsList)
             {
-                Console.WriteLine($"{index} {band.Name} {band.StudioAlbums} {band.Country}");
+                //Console.WriteLine($"{index} {band.Name} {band.StudioAlbums} {band.Country}");
                 index++;
             }
 
+            bandsList.Sort();
+
+            for (var i = bandsList.Capacity - 1; i >= 0; i--)
+            {
+                Console.WriteLine($"{bandsList[i].Name} {bandsList[i].Country} {bandsList[i].StudioAlbums}");
+            }
             Console.WriteLine();
 
             //Add/Get range example

@@ -228,13 +228,13 @@ namespace Lambda
              * and use it to extract the biggest number from numbersList collection.
              */
 
-            Func<int, int, int> isBigger = (var1, var2) => var2 > var1 ? var2 : var1;
+            Func<int, int, int> getMax = (var1, var2) => var2 > var1 ? var2 : var1;
             int max = 0;
             for (int i = 0; i < numbersList.Count - 1; i++)
             {
                 for(int j = i; j < numbersList.Count; j++)
                 {
-                    max = isBigger(numbersList[i], numbersList[j]);
+                    max = getMax(numbersList[i], numbersList[j]);
                 }
             }
             Console.WriteLine($"The biggest element of this list is : {max}");
@@ -249,7 +249,7 @@ namespace Lambda
             {
                 for (int j = i; j < numbersList.Count; j++)
                 {
-                    aux = isBigger(numbersList[i], numbersList[j]);
+                    aux = getMax(numbersList[i], numbersList[j]);
                     if(aux == numbersList[i] && numbersList[i] != numbersList[j])
                     {
                         aux = numbersList[j];

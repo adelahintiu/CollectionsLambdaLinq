@@ -28,12 +28,12 @@ namespace Linq
 
         static void Main(string[] args)
         {
-            WhereExample();
+            //WhereExample();
             //SelectExample();
             //SelectManyExample();
             //AggregateExample();
             //GroupByExample();
-            //SumMaxMinExample();
+            SumMaxMinExample();
 
             Console.ReadKey();
         }

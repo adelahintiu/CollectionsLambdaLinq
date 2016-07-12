@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Linq.EnumerableMethods
@@ -37,7 +38,7 @@ namespace Linq.EnumerableMethods
         //Hint: Use string.Split(' ') to get a list of words from a string.
         public static IEnumerable<string> GetAllWordsInAllAlbums(IEnumerable<Band> fullBandsInfo)
         {
-            return new List<string>();
+            return fullBandsInfo.SelectMany(albumInfo => albumInfo.Albums).SelectMany(album => album.Split(' '));
         }
     }
 }
